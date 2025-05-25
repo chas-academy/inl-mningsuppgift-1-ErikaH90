@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sök namn</title>
+</head>
+<body>
+
+  <input type="text" id="searchInput" placeholder="Skriv ett namn" />
+  <button id="searchBtn">Sök</button>
+  <p id="resultDisplay"></p>
+
+  <script>
+    // Skapa en array med namn
+    const people = ["Anna", "Kalle", "Maria", "Erik", "Sara"];
+
+    // Hämta HTML-elementen
+    const searchInput = document.getElementById("searchInput");
+    const searchBtn = document.getElementById("searchBtn");
+    const resultDisplay = document.getElementById("resultDisplay");
+
+    // Lägg till klickhändelse
+    searchBtn.addEventListener("click", function() {
+      // Hämta texten från inputfältet och trimma whitespace
+      const searchText = searchInput.value.trim();
+
+      // Boolean för att kolla om namn hittades
+      let found = false;
+
+      // Loopa igenom arrayen med namn
+      for (let i = 0; i < people.length; i++) {
+        // Jämför namn, case-insensitive
+        if (people[i].toLowerCase() === searchText.toLowerCase()) {
+          resultDisplay.textContent = `Namn hittades: ${people[i]}`;
+          found = true;
+          break;
+        }
+      }
+
+      // Om inget namn hittades
+      if (!found) {
+        resultDisplay.textContent = "Namn hittades inte.";
+      }
+    });
+  </script>
+
+</body>
+</html>
